@@ -1,0 +1,487 @@
+\ProvidesPackage{style/header}
+
+% Packages
+%% Files
+\usepackage{subfiles}
+%% Symbols
+\usepackage{amsmath, amssymb, stmaryrd, verbatim} % math symbols
+\usepackage{mathdots}
+\usepackage{mathtools}
+%% Digrams
+\usepackage{tikz, tikz-cd, float} % Commutative Diagrams
+\usetikzlibrary{decorations.pathmorphing} % for squiggly arrows in tikzcd
+\usetikzlibrary{calc,math,backgrounds,fit} % general stuff
+\usepackage{nicematrix}
+\usepackage{graphicx}
+%% General formatting
+\usepackage[margin=1in]{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ } % Page shape
+\usepackage{parskip} % So that paragraphs look nice
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor} % Fancy Colours
+%% Custom theorem formatting
+\usepackage{amsthm} % thm environment
+\usepackage{mdframed} % Customizable Boxes
+\usepackage{ifthen,xargs} % For defining better commands
+%% Misc
+\usepackage{perpage} %Changing counters
+\usepackage[utf8]{inputenc}
+%% Referencing
+\usepackage{hyperref,nameref,cleveref,enumitem} % for references, hyperlinks
+\usepackage[backend=biber,
+            isbn=false,
+            doi=false,
+            giveninits=true,
+            style=alphabetic,
+            useprefix=true,
+            maxcitenames=4,
+            maxbibnames=4,
+            sorting=nyt,
+            citestyle=alphabetic]{biblatex}
+
+%Environments
+
+%Math fonts
+%%Mathbb{
+  \newcommand{\bA}{\mathbb{A}}
+  \newcommand{\bB}{\mathbb{B}}
+  \newcommand{\bC}{\mathbb{C}}
+  \newcommand{\bD}{\mathbb{D}}
+  \newcommand{\bE}{\mathbb{E}}
+  \newcommand{\bF}{\mathbb{F}}
+  \newcommand{\bG}{\mathbb{G}}
+  \newcommand{\bH}{\mathbb{H}}
+  \newcommand{\bI}{\mathbb{I}}
+  \newcommand{\bJ}{\mathbb{J}}
+  \newcommand{\bK}{\mathbb{K}}
+  \newcommand{\bL}{\mathbb{L}}
+  \newcommand{\bM}{\mathbb{M}}
+  \newcommand{\bN}{\mathbb{N}}
+  \newcommand{\bO}{\mathbb{O}}
+  \newcommand{\bP}{\mathbb{P}}
+  \newcommand{\bQ}{\mathbb{Q}}
+  \newcommand{\bR}{\mathbb{R}}
+  \newcommand{\bS}{\mathbb{S}}
+  \newcommand{\bT}{\mathbb{T}}
+  \newcommand{\bU}{\mathbb{U}}
+  \newcommand{\bV}{\mathbb{V}}
+  \newcommand{\bW}{\mathbb{W}}
+  \newcommand{\bX}{\mathbb{X}}
+  \newcommand{\bY}{\mathbb{Y}}
+  \newcommand{\bZ}{\mathbb{Z}}
+%%}
+%% Mathcal{
+  \newcommand{\cA}{\mathcal{A}}
+  \newcommand{\cB}{\mathcal{B}}
+  \newcommand{\cC}{\mathcal{C}}
+  \newcommand{\cD}{\mathcal{D}}
+  \newcommand{\cE}{\mathcal{E}}
+  \newcommand{\cF}{\mathcal{F}}
+  \newcommand{\cG}{\mathcal{G}}
+  \newcommand{\cH}{\mathcal{H}}
+  \newcommand{\cI}{\mathcal{I}}
+  \newcommand{\cJ}{\mathcal{J}}
+  \newcommand{\cK}{\mathcal{K}}
+  \newcommand{\cL}{\mathcal{L}}
+  \newcommand{\cM}{\mathcal{M}}
+  \newcommand{\cN}{\mathcal{N}}
+  \newcommand{\cO}{\mathcal{O}}
+  \newcommand{\cP}{\mathcal{P}}
+  \newcommand{\cQ}{\mathcal{Q}}
+  \newcommand{\cR}{\mathcal{R}}
+  \newcommand{\cS}{\mathcal{S}}
+  \newcommand{\cT}{\mathcal{T}}
+  \newcommand{\cU}{\mathcal{U}}
+  \newcommand{\cV}{\mathcal{V}}
+  \newcommand{\cW}{\mathcal{W}}
+  \newcommand{\cX}{\mathcal{X}}
+  \newcommand{\cY}{\mathcal{Y}}
+  \newcommand{\cZ}{\mathcal{Z}}
+%%}
+%% Mathfrak{
+  \newcommand{\fA}{\mathfrak{A}}
+  \newcommand{\fB}{\mathfrak{B}}
+  \newcommand{\fC}{\mathfrak{C}}
+  \newcommand{\fD}{\mathfrak{D}}
+  \newcommand{\fE}{\mathfrak{E}}
+  \newcommand{\fF}{\mathfrak{F}}
+  \newcommand{\fG}{\mathfrak{G}}
+  \newcommand{\fH}{\mathfrak{H}}
+  \newcommand{\fI}{\mathfrak{I}}
+  \newcommand{\fJ}{\mathfrak{J}}
+  \newcommand{\fK}{\mathfrak{K}}
+  \newcommand{\fL}{\mathfrak{L}}
+  \newcommand{\fM}{\mathfrak{M}}
+  \newcommand{\fN}{\mathfrak{N}}
+  \newcommand{\fO}{\mathfrak{O}}
+  \newcommand{\fP}{\mathfrak{P}}
+  \newcommand{\fQ}{\mathfrak{Q}}
+  \newcommand{\fR}{\mathfrak{R}}
+  \newcommand{\fS}{\mathfrak{S}}
+  \newcommand{\fT}{\mathfrak{T}}
+  \newcommand{\fU}{\mathfrak{U}}
+  \newcommand{\fV}{\mathfrak{V}}
+  \newcommand{\fW}{\mathfrak{W}}
+  \newcommand{\fX}{\mathfrak{X}}
+  \newcommand{\fY}{\mathfrak{Y}}
+  \newcommand{\fZ}{\mathfrak{Z}}
+%%}
+%% Mathrm{
+  \newcommand{\rA}{\mathrm{A}}
+  \newcommand{\rB}{\mathrm{B}}
+  \newcommand{\rC}{\mathrm{C}}
+  \newcommand{\rD}{\mathrm{D}}
+  \newcommand{\rE}{\mathrm{E}}
+  \newcommand{\rF}{\mathrm{F}}
+  \newcommand{\rG}{\mathrm{G}}
+  \newcommand{\rH}{\mathrm{H}}
+  \newcommand{\rI}{\mathrm{I}}
+  \newcommand{\rJ}{\mathrm{J}}
+  \newcommand{\rK}{\mathrm{K}}
+  \newcommand{\rL}{\mathrm{L}}
+  \newcommand{\rM}{\mathrm{M}}
+  \newcommand{\rN}{\mathrm{N}}
+  \newcommand{\rO}{\mathrm{O}}
+  \newcommand{\rP}{\mathrm{P}}
+  \newcommand{\rQ}{\mathrm{Q}}
+  \newcommand{\rR}{\mathrm{R}}
+  \newcommand{\rS}{\mathrm{S}}
+  \newcommand{\rT}{\mathrm{T}}
+  \newcommand{\rU}{\mathrm{U}}
+  \newcommand{\rV}{\mathrm{V}}
+  \newcommand{\rW}{\mathrm{W}}
+  \newcommand{\rX}{\mathrm{X}}
+  \newcommand{\rY}{\mathrm{Y}}
+  \newcommand{\rZ}{\mathrm{Z}}
+
+  \newcommand{\ra}{\mathrm{a}}
+  \newcommand{\rb}{\mathrm{b}}
+  \newcommand{\rc}{\mathrm{c}}
+  \newcommand{\rd}{\mathrm{d}}
+  \newcommand{\re}{\mathrm{e}}
+  \newcommand{\rf}{\mathrm{f}}
+  \newcommand{\rg}{\mathrm{g}}
+  \newcommand{\rh}{\mathrm{h}}
+  \newcommand{\ri}{\mathrm{i}}
+  \newcommand{\rj}{\mathrm{j}}
+  \newcommand{\rk}{\mathrm{k}}
+  \newcommand{\rl}{\mathrm{l}}
+  \renewcommand{\rm}{\mathrm{m}}
+  \newcommand{\rn}{\mathrm{n}}
+  \newcommand{\ro}{\mathrm{o}}
+  \newcommand{\rp}{\mathrm{p}}
+  \renewcommand{\rq}{\mathrm{q}}
+  \newcommand{\rr}{\mathrm{r}}
+  \newcommand{\rs}{\mathrm{s}}
+  \newcommand{\rt}{\mathrm{t}}
+  \newcommand{\ru}{\mathrm{u}}
+  \newcommand{\rv}{\mathrm{v}}
+  \newcommand{\rw}{\mathrm{w}}
+  \newcommand{\rx}{\mathrm{x}}
+  \newcommand{\ry}{\mathrm{y}}
+  \newcommand{\rz}{\mathrm{z}}
+%%}
+
+% Brackets
+
+\newcommand{\br}{\del} % Brackets
+\newcommand{\abr}[1]{\left\langle #1 \right\rangle} % Angle brackets
+\newcommand{\aabr}[1]{\left|\left\langle #1 \right\rangle\right|} %angle then abs
+\newcommand{\fbr}[1]{\left\lfloor #1 \right\rfloor} % Floor brackets
+
+% Functions
+
+\newcommand{\bijection}[7][]{    % Bijection
+  \ifx &#1&
+    \begin{array}{rcl}
+      #2 & \longleftrightarrow & #3 \\
+      #4 & \longmapsto         & #5 \\
+      #6 & \longmapsfrom       & #7
+    \end{array}
+  \else
+    \begin{array}{ccrcl}
+      #1 & : & #2 & \longrightarrow & #3 \\
+         &   & #4 & \longmapsto     & #5 \\
+         &   & #6 & \longmapsfrom   & #7
+    \end{array}
+  \fi
+}
+\newcommand{\correspondence}[2]{ % Correspondence
+  \cbr{
+    \begin{array}{c}
+      #1
+    \end{array}
+  }
+  \qquad
+  \leftrightsquigarrow
+  \qquad
+  \cbr{
+    \begin{array}{c}
+      #2
+    \end{array}
+  }
+}
+\newcommand{\function}[5][]{     % Function
+  \ifx &#1&
+    \begin{array}{rcl}
+      #2 & \longrightarrow & #3 \\
+      #4 & \longmapsto     & #5
+    \end{array}
+  \else
+    \begin{array}{ccrcl}
+      #1 & : & #2 & \longrightarrow & #3 \\
+         &   & #4 & \longmapsto     & #5
+    \end{array}
+  \fi
+}
+\newcommand{\functions}[7][]{    % Functions
+  \ifx &#1&
+    \begin{array}{rcl}
+      #2 & \longrightarrow & #3 \\
+      #4 & \longmapsto     & #5 \\
+      #6 & \longmapsto     & #7
+    \end{array}
+  \else
+    \begin{array}{ccrcl}
+      #1 & : & #2 & \longrightarrow & #3 \\
+         &   & #4 & \longmapsto     & #5 \\
+         &   & #6 & \longmapsto     & #7
+    \end{array}
+  \fi
+}
+
+% Operators {
+  \newcommand\newoperator[1]{\ifcsdef{#1}{\cslet{#1}{\relax}}{}\csdef{#1}{\operatorname{#1}}}
+  \newoperator{ab}    % Abelian
+  \newoperator{AG}    % Affine geometry
+  \newoperator{alg}   % Algebraic
+  \newoperator{Ann}   % Annihilator
+  \newoperator{area}  % Area
+  \newoperator{Aut}   % Automorphism
+  \newoperator{BC}    % Bott-Chern
+  \newoperator{Br}    % Brauer group
+  \newoperator{card}  % Cardinality
+  \newoperator{ch}    % Characteristic
+  \newoperator{Cl}    % Class
+  \newoperator{coker} % Cokernel
+  \newoperator{col}   % Column
+  \newoperator{Cond}
+  \newoperator{cone}
+  \newoperator{Corr}  % Correspondence
+  \newoperator{diam}  % Diameter
+  \newoperator{Disc}  % Discriminant
+  \newoperator{dom}   % Domain
+  \newoperator{Eig}   % Eigenvalue
+  \newoperator{Emb}   % Embedding
+  \newoperator{End}   % Endomorphism
+  \newoperator{Ext}   % Ext
+  \newoperator{fd}    % Flat dimension
+  \newoperator{fin}   % Finite
+  \newoperator{Fix}   % Fixed
+  \newoperator{Frac}  % Fraction
+  \newoperator{Frob}  % Frobenius
+  \newoperator{Fun}   % Function
+  \newoperator{Gal}   % Galois
+  \newoperator{gd}    % Global dimension
+  \newoperator{GL}    % General linear
+  \newoperator{Ham}   % Hamming
+  \newoperator{Hom}   % Homomorphism
+  \newoperator{Homeo} % Homeomorphism
+  \newoperator{id}    % Identity
+  \newoperator{im}    % Image
+  \newoperator{Ind}   % Index
+  \newoperator{Inn}   % Inner automorphisms
+  \newoperator{ker}   % Kernel
+  \newoperator{lcm}   % Least common multiple
+  \newoperator{lgd}   % Left global dimension
+  \newoperator{Mat}   % Matrix
+  \newoperator{mult}  % Multiplicity
+  \newoperator{new}   % New
+  \newoperator{Nm}    % Norm
+  \newoperator{Ob}    % Objects
+  \newoperator{old}   % Old
+  \newoperator{op}    % Opposite
+  \newoperator{ord}   % Order
+  \newoperator{Pay}   % Payley
+  \newoperator{pd}    % Projective dimension
+  \newoperator{PG}    % Projective geometry
+  \newoperator{PGL}   % Projective general linear
+  \newoperator{prim}  % Primitive
+  \newoperator{PSL}   % Projective special linear
+  \newoperator{rad}   % Radical
+  \newoperator{ran}   % Range
+  \newoperator{Res}   % Residue
+  \newoperator{rgd}   % Right global dimension
+  \newoperator{rk}    % Rank
+  \newoperator{row}   % Row
+  \newoperator{sgn}   % Sign
+  \newoperator{Sing}  % Singular
+  \newoperator{SK}    % Skeleton
+  \newoperator{SL}    % Special linear
+  \newoperator{SO}    % Special orthogonal
+  \newoperator{sp}    % Span
+  \newoperator{Spec}  % Spectrum
+  \newoperator{srg}   % Strongly regular graph
+  \newoperator{Stab}  % Stabiliser
+  \newoperator{Star}  % Star
+  \newoperator{supp}  % Support
+  \newoperator{Sym}   % Symmetric
+  \newoperator{Tor}   % Tor
+  \newoperator{tors}  % Torsion
+  \newoperator{Tot}
+  \newoperator{Tr}    % Trace
+  \newoperator{trdeg} % Transcendence degree
+  \newoperator{wgd}   % Weak global dimension
+  \newoperator{wt}    % Weight
+  \newoperator{Wr}
+%}
+
+% Theorem environments {
+  \newtheoremstyle{definitionstyle}
+  {}% above thm
+  {}% below thm
+  {}% body font
+  {}% space to indent
+  {\bf}% head font
+  {}% punctuation between head and body
+  { }% space after head
+  {\thmname{#1} \thmnumber{#2}\thmnote{ (#3)}}
+
+  \theoremstyle{definitionstyle}
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{dfn}{Def}[section]
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{prop}{Prop}[section]
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{lem}{Lemma}[section]
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{cor}{Cor}[section]
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{exc}{Exc}[section]
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{eg}{Eg}[section]
+
+  \newtheoremstyle{bigtheoremstyle}
+  {}% above thm
+  {}% below thm
+  {}% body font
+  {}% space to indent
+  {\bf}% head font
+  {}% punctuation between head and body
+  { }% space after head
+  {\thmname{#1}\thmnote{ (#3)}}
+
+  \theoremstyle{bigtheoremstyle}
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{thrm}{Theorem}
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true
+  ]{conj}{Conjecture}
+
+  \newtheoremstyle{proofstyle}%
+  {}% above thm
+  {}% below thm
+  {}% body font
+  {}% space to indent
+  {\itshape}% head font
+  {}% punctuation between head and body
+  { }% space after head
+  {\thmname{#1} \thmnote{#3}.}
+  \theoremstyle{proofstyle}
+  \newmdtheoremenv[
+      linewidth = 1pt,
+      leftmargin = 0pt,
+      rightmargin = 0pt,
+      linecolor = Black,
+      topline = false,
+      bottomline = false,
+      rightline = false,
+      skipabove = 5pt,
+      footnoteinside = true,
+  ]{prf}{Proof}[section]
+
+  \usepackage{etoolbox}
+
+  \AtEndEnvironment{prf}{\null\hfill\qedsymbol}
+%}
+
+\MakePerPage{footnote}
+\pagestyle{fancy}
+\lhead{\module}
+\rhead{\nouppercase{\leftmark}}
